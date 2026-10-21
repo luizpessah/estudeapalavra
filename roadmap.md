@@ -1,0 +1,3 @@
+- [ ] Extract and verify the complete attached Bible.
+- [ ] Add a Bible tab with complete text search and access to the original PDF.
+- [ ] Test search completeness and verify the app flow.

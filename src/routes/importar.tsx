@@ -12,6 +12,8 @@ export const Route = createFileRoute("/importar")({
       { name: "description", content: "Importe o documento Word consolidado de estudos bíblicos e valide os estudos extraídos." },
       { property: "og:title", content: "Importar documento de estudos" },
       { property: "og:description", content: "Envie o arquivo .docx e revise cada estudo antes de publicar." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ImportPage,

@@ -13,6 +13,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Leia, pesquise e navegue por 71 estudos bíblicos temáticos organizados por séries e categorias." },
       { property: "og:title", content: "Estudos Bíblicos Temáticos" },
       { property: "og:description", content: "Leia, pesquise e navegue por estudos bíblicos organizados por séries e temas." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { BookMarked, Moon, Sun, Upload, Home } from "lucide-react";
+import { BookMarked, BookOpen, Moon, Sun, Upload, Home } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 
 function useTheme() {
   const [dark, setDark] = useState(false);
@@ -32,6 +33,7 @@ export function Shell({ children }: { children: ReactNode }) {
           </Link>
           <nav className="flex items-center gap-1">
             <Link to="/" className={`${nav} hidden md:inline-flex`}><Home className="h-4 w-4" />Início</Link>
+            <Button asChild variant="ghost" className="hidden text-muted-foreground md:inline-flex"><Link to="/biblia"><BookOpen />Bíblia</Link></Button>
             <Link to="/importar" className={`${nav} hidden md:inline-flex`}><Upload className="h-4 w-4" />Importar</Link>
             <button onClick={toggle} aria-label="Alternar tema" className={nav}>
               {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -42,6 +44,7 @@ export function Shell({ children }: { children: ReactNode }) {
       <main className="mx-auto max-w-5xl px-4 py-6 md:py-10">{children}</main>
       <nav className="no-print fixed inset-x-4 bottom-4 z-30 flex justify-around rounded-2xl border bg-card p-1 shadow-soft md:hidden">
         <Link to="/" className={nav}><Home className="h-4 w-4" />Início</Link>
+        <Button asChild variant="ghost" className="text-muted-foreground"><Link to="/biblia"><BookOpen />Bíblia</Link></Button>
         <Link to="/importar" className={nav}><Upload className="h-4 w-4" />Importar</Link>
       </nav>
     </div>

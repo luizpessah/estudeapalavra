@@ -73,7 +73,7 @@ function BiblePage() {
         <label htmlFor="bible-search" className="text-sm font-medium text-heading">Pesquisar na Bíblia</label>
         <div className="relative">
           <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-          <input id="bible-search" type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Pesquisar palavra ou expressão, ex.: perdão" className="h-14 w-full rounded-lg border bg-card pl-12 pr-12 text-heading outline-none focus:ring-2 focus:ring-ring" />
+          <input id="bible-search" type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Pesquisar palavra ou expressão, ex.: perdão" className="h-14 w-full rounded-lg border bg-card pl-12 pr-12 text-heading outline-none focus:ring-2 focus:ring-ring [&::-webkit-search-cancel-button]:appearance-none" />
           {query && <Button variant="ghost" size="icon" aria-label="Limpar pesquisa" title="Limpar pesquisa" className="absolute right-2 top-1/2 -translate-y-1/2" onClick={() => setQuery("")}><X /></Button>}
         </div>
         <select aria-label="Filtrar pesquisa por livro" value={book} onChange={(e) => { setBook(e.target.value); setPage(1); }} className={`${selectClass} w-full sm:w-64`}>

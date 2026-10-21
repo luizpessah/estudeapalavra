@@ -22,7 +22,7 @@ function VerseCard() {
   const [i, setI] = useState(0);
   const [copied, setCopied] = useState(false);
   useEffect(() => setI(Math.floor(Math.random() * VERSES.length)), []);
-  const v = VERSES[i];
+  const v = VERSES[i] ?? VERSES[0]!;
   const next = () => setI((c) => (c + 1 + Math.floor(Math.random() * (VERSES.length - 1))) % VERSES.length);
   const copy = async () => {
     await navigator.clipboard.writeText(`"${v.text}" — ${v.ref}`);

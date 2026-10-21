@@ -27,11 +27,11 @@ export function parseStudies(raw: string): Study[] {
     const m = l.match(HEADER);
     if (!m) return;
     let j = i - 1;
-    while (j >= 0 && !lines[j].trim()) j--;
-    heads.push({ idx: i, titleIdx: j, series: +m[1], number: +m[2] });
+    while (j >= 0 && !lines[j]!.trim()) j--;
+    heads.push({ idx: i, titleIdx: j, series: +m[1]!, number: +m[2]! });
   });
   return heads.map((h, k) => {
-    const end = k + 1 < heads.length ? heads[k + 1].titleIdx : lines.length;
+    const end = k + 1 < heads.length ? heads[k + 1]!.titleIdx : lines.length;
     const body = lines
       .slice(h.idx + 1, end)
       .join("\n")
@@ -41,7 +41,7 @@ export function parseStudies(raw: string): Study[] {
       id: h.number,
       series: h.series,
       number: h.number,
-      title: titleCase(h.titleIdx >= 0 ? lines[h.titleIdx] : `Estudo ${h.number}`),
+      title: titleCase(h.titleIdx >= 0 ? lines[h.titleIdx]! : `Estudo ${h.number}`),
       body,
     };
   });

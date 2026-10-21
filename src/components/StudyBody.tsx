@@ -11,10 +11,10 @@ function withRefs(text: string): ReactNode[] {
   let last = 0;
   let k = 0;
   for (const m of text.matchAll(REF)) {
-    const [full, book, ch, vs] = m;
+    const full = m[0]; const book = m[1]!; const ch = m[2]!; const vs = m[3]!;
     const parts = book.split(" ");
-    const abbr = parts.length > 1 ? parts[1] : parts[0];
-    const name = (parts.length > 1 ? parts[0] + " " : "") + BOOKS[abbr];
+    const abbr = (parts.length > 1 ? parts[1] : parts[0])!;
+    const name = (parts.length > 1 ? parts[0]! + " " : "") + BOOKS[abbr];
     out.push(text.slice(last, m.index));
     out.push(
       <a
@@ -43,15 +43,15 @@ export function StudyBody({ body }: { body: string }) {
   let i = 0;
   let key = 0;
   while (i < lines.length) {
-    const line = lines[i].trim();
+    const line = lines[i]!.trim();
     if (!line) { i++; continue; }
-    if (lines[i].includes("\t")) {
+    if (lines[i]!.includes("\t")) {
       const rows: string[][] = [];
-      while (i < lines.length && lines[i].includes("\t")) {
-        rows.push(lines[i].split("\t").map((c) => c.trim()));
+      while (i < lines.length && lines[i]!.includes("\t")) {
+        rows.push(lines[i]!.split("\t").map((c) => c.trim()));
         i++;
       }
-      const [head, ...rest] = rows;
+      const [head = [], ...rest] = rows;
       blocks.push(
         <div key={key++} className="my-6 -mx-4 overflow-x-auto px-4 md:mx-0 md:px-0">
           <table className="w-full min-w-[560px] border-collapse overflow-hidden rounded-xl border text-left font-sans text-sm">
@@ -75,14 +75,14 @@ export function StudyBody({ body }: { body: string }) {
     if (r) {
       blocks.push(
         <h2 key={key++} className="mt-10 flex gap-3 font-sans text-[1.05em] font-semibold uppercase tracking-wide text-heading">
-          <span className="text-primary">{r[1]}</span><span>{withRefs(r[2])}</span>
+          <span className="text-primary">{r[1]}</span><span>{withRefs(r[2]!)}</span>
         </h2>,
       );
     } else if (s) {
       blocks.push(
         <p key={key++} className="mt-3 flex gap-3 pl-1">
           <span className="w-5 shrink-0 font-sans font-semibold text-primary">{s[1]}</span>
-          <span>{withRefs(s[2])}</span>
+          <span>{withRefs(s[2]!)}</span>
         </p>,
       );
     } else if (line === line.toUpperCase() && /[A-ZÀ-Ú]{3}/.test(line) && line.length < 90) {

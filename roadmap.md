@@ -1,0 +1,3 @@
+- [x] Extract and verify the complete attached Bible (1,504 pages, 39 books, 929 chapters, 23,145 verse markers; no numbering gaps or unassigned body text).
+- [x] Add a Bible tab with complete text search and access to the original PDF.
+- [x] Test search completeness and verify the app flow (perdão, accent-insensitive matches, book filter, pagination, no results, reading and mobile layout).

@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BibliaRouteImport } from './routes/biblia'
 import { Route as ImportarRouteImport } from './routes/importar'
 import { Route as EstudoIdRouteImport } from './routes/estudo.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BibliaRoute = BibliaRouteImport.update({
+  id: '/biblia',
+  path: '/biblia',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImportarRoute = ImportarRouteImport.update({
@@ -31,30 +37,34 @@ const EstudoIdRoute = EstudoIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/biblia': typeof BibliaRoute
   '/importar': typeof ImportarRoute
   '/estudo/$id': typeof EstudoIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/biblia': typeof BibliaRoute
   '/importar': typeof ImportarRoute
   '/estudo/$id': typeof EstudoIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/biblia': typeof BibliaRoute
   '/importar': typeof ImportarRoute
   '/estudo/$id': typeof EstudoIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/importar' | '/estudo/$id'
+  fullPaths: '/' | '/biblia' | '/importar' | '/estudo/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/importar' | '/estudo/$id'
-  id: '__root__' | '/' | '/importar' | '/estudo/$id'
+  to: '/' | '/biblia' | '/importar' | '/estudo/$id'
+  id: '__root__' | '/' | '/biblia' | '/importar' | '/estudo/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BibliaRoute: typeof BibliaRoute
   ImportarRoute: typeof ImportarRoute
   EstudoIdRoute: typeof EstudoIdRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/biblia': {
+      id: '/biblia'
+      path: '/biblia'
+      fullPath: '/biblia'
+      preLoaderRoute: typeof BibliaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/importar': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BibliaRoute: BibliaRoute,
   ImportarRoute: ImportarRoute,
   EstudoIdRoute: EstudoIdRoute,
 }

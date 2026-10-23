@@ -95,15 +95,15 @@ function BiblePage() {
 
   const handlePrevBook = () => {
     if (currentIndex > 0) {
-      handleSelectBook(BIBLE_BOOKS[currentIndex - 1]);
+      handleSelectBook(BIBLE_BOOKS[currentIndex - 1] ?? null);
     }
   };
 
   const handleNextBook = () => {
     if (currentIndex >= 0 && currentIndex < BIBLE_BOOKS.length - 1) {
-      handleSelectBook(BIBLE_BOOKS[currentIndex + 1]);
+      handleSelectBook(BIBLE_BOOKS[currentIndex + 1] ?? null);
     } else if (currentIndex === -1) {
-      handleSelectBook(BIBLE_BOOKS[0]);
+      handleSelectBook(BIBLE_BOOKS[0] ?? null);
     }
   };
 
@@ -118,8 +118,8 @@ function BiblePage() {
       <div className="space-y-6">
         {/* Cabeçalho */}
         <header className="border-b pb-6">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>
+          <div className="grid min-w-0 grid-cols-1 items-start gap-4 lg:grid-cols-[minmax(0,1fr)_auto]">
+            <div className="min-w-0">
               <p className="flex items-center gap-2 text-sm font-medium text-primary">
                 <BookOpen className="h-4 w-4" />
                 Bíblia Sagrada Integrada
@@ -169,12 +169,12 @@ function BiblePage() {
         >
           <div className="flex flex-col gap-4">
             {/* Abas de Testamento + Busca rápida */}
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center rounded-lg border bg-muted/40 p-1">
+            <div className="grid min-w-0 gap-3 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-center">
+              <div className="grid min-w-0 grid-cols-3 items-stretch rounded-lg border bg-muted/40 p-1">
                 <button
                   type="button"
                   onClick={() => setTestamentFilter("todos")}
-                  className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-all sm:text-sm ${
+                  className={`min-w-0 rounded-md px-1 py-2 text-xs font-semibold transition-all sm:text-sm ${
                     testamentFilter === "todos"
                       ? "bg-background text-foreground shadow-sm"
                       : "text-muted-foreground hover:text-foreground"
@@ -185,7 +185,7 @@ function BiblePage() {
                 <button
                   type="button"
                   onClick={() => setTestamentFilter("AT")}
-                  className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-all sm:text-sm ${
+                  className={`min-w-0 rounded-md px-1 py-2 text-xs font-semibold transition-all sm:text-sm ${
                     testamentFilter === "AT"
                       ? "bg-background text-foreground shadow-sm"
                       : "text-muted-foreground hover:text-foreground"
@@ -196,7 +196,7 @@ function BiblePage() {
                 <button
                   type="button"
                   onClick={() => setTestamentFilter("NT")}
-                  className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-all sm:text-sm ${
+                  className={`min-w-0 rounded-md px-1 py-2 text-xs font-semibold transition-all sm:text-sm ${
                     testamentFilter === "NT"
                       ? "bg-background text-foreground shadow-sm"
                       : "text-muted-foreground hover:text-foreground"
@@ -207,7 +207,7 @@ function BiblePage() {
               </div>
 
               {/* Busca rápida de livro */}
-              <div className="relative w-full sm:w-64">
+              <div className="relative min-w-0 w-full">
                 <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <input
                   type="search"
@@ -220,7 +220,7 @@ function BiblePage() {
             </div>
 
             {/* Menu Dropdown de Seleção Rápida */}
-            <div className="flex flex-wrap items-center gap-2 border-t pt-3">
+            <div className="grid min-w-0 gap-2 border-t pt-3 sm:flex sm:flex-wrap sm:items-center">
               <span className="text-xs font-medium text-muted-foreground">
                 Escolher livro rápido:
               </span>
@@ -232,7 +232,7 @@ function BiblePage() {
                   const found = BIBLE_BOOKS.find((b) => b.slug === slug) ?? null;
                   handleSelectBook(found);
                 }}
-                className="h-9 min-w-0 max-w-xs rounded-md border bg-background px-3 text-xs text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm"
+                className="h-10 w-full min-w-0 sm:max-w-xs rounded-md border bg-background px-3 text-xs text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm"
               >
                 <option value="">📖 Página Inicial ARA (Visão Geral)</option>
                 <optgroup label="Antigo Testamento (Gênesis a Malaquias)">
@@ -307,13 +307,13 @@ function BiblePage() {
           aria-label="Leitor da Bíblia Online"
           className={`space-y-3 transition-all ${
             isFullscreen
-              ? "fixed inset-0 z-50 flex flex-col bg-background p-4"
+              ? "fixed inset-0 z-50 flex min-h-0 flex-col bg-background p-2 sm:p-4"
               : "relative"
           }`}
         >
           {/* Barra de controle do leitor */}
-          <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border bg-card px-4 py-2.5 shadow-sm">
-            <div className="flex items-center gap-2">
+          <div className="grid min-w-0 grid-cols-1 gap-2 rounded-xl border bg-card px-2 py-2.5 shadow-sm lg:grid-cols-[minmax(0,1fr)_auto]">
+            <div className="grid min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-1">
               <Button
                 variant="outline"
                 size="sm"
@@ -325,8 +325,8 @@ function BiblePage() {
                 <span className="hidden sm:inline">Anterior</span>
               </Button>
 
-              <div className="flex items-center gap-2 px-2">
-                <span className="text-sm font-semibold text-heading">
+              <div className="flex min-w-0 flex-col items-center justify-center gap-1 px-1 sm:flex-row">
+                <span className="max-w-full truncate text-sm font-semibold text-heading">
                   {selectedBook ? selectedBook.name : "Bíblia Online ARA"}
                 </span>
                 {selectedBook && (
@@ -350,7 +350,7 @@ function BiblePage() {
               </Button>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex shrink-0 items-center justify-end gap-2">
               <Button
                 variant="ghost"
                 size="sm"
@@ -387,7 +387,7 @@ function BiblePage() {
           {/* Iframe incorporado dentro do App */}
           <div
             className={`overflow-hidden rounded-2xl border bg-card shadow-sm ${
-              isFullscreen ? "flex-1" : "h-[750px] md:h-[850px]"
+              isFullscreen ? "min-h-0 flex-1" : "h-[75dvh] min-h-[360px] max-h-[1000px]"
             }`}
           >
             <iframe

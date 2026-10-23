@@ -60,9 +60,9 @@ function VerseCard() {
       <blockquote className="mt-3 font-serif text-lg leading-relaxed text-heading md:text-2xl">
         “{v.text}”
       </blockquote>
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+      <div className="mt-4 grid min-w-0 gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
         <cite className="text-sm not-italic text-muted-foreground">{v.ref}</cite>
-        <div className="flex gap-2">
+        <div className="flex min-w-0 flex-wrap gap-2">
           <button
             onClick={next}
             className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted hover:text-heading cursor-pointer transition-colors"
@@ -189,16 +189,16 @@ function Index() {
 
         {/* NAVEGAÇÃO DE ABAS NA TELA PRINCIPAL */}
         <section className="flex flex-col gap-2 border-b pb-2">
-          <div className="flex flex-wrap items-center justify-start gap-2">
+          <div className="grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-3">
             <button
               onClick={() => handleTabChange("estudos")}
-              className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all cursor-pointer ${
+              className={`inline-flex min-w-0 items-center justify-center gap-2 whitespace-normal rounded-xl px-3 py-2.5 text-sm font-semibold transition-all cursor-pointer ${
                 activeTab === "estudos"
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "bg-card text-muted-foreground hover:bg-muted hover:text-heading border"
               }`}
             >
-              <BookOpen className="h-4 w-4" />
+              <BookOpen className="h-4 w-4 shrink-0" />
               <span>Estudos Bíblicos</span>
               <span
                 className={`ml-1 rounded-full px-2 py-0.5 text-xs ${
@@ -213,13 +213,13 @@ function Index() {
 
             <button
               onClick={() => handleTabChange("crencas")}
-              className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all cursor-pointer ${
+              className={`inline-flex min-w-0 items-center justify-center gap-2 whitespace-normal rounded-xl px-3 py-2.5 text-sm font-semibold transition-all cursor-pointer ${
                 activeTab === "crencas"
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "bg-card text-muted-foreground hover:bg-muted hover:text-heading border"
               }`}
             >
-              <BookmarkCheck className="h-4 w-4" />
+              <BookmarkCheck className="h-4 w-4 shrink-0" />
               <span>Crenças Fundamentais</span>
               <span
                 className={`ml-1 rounded-full px-2 py-0.5 text-xs ${
@@ -234,13 +234,13 @@ function Index() {
 
             <button
               onClick={() => handleTabChange("curiosidades")}
-              className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all cursor-pointer ${
+              className={`inline-flex min-w-0 items-center justify-center gap-2 whitespace-normal rounded-xl px-3 py-2.5 text-sm font-semibold transition-all cursor-pointer ${
                 activeTab === "curiosidades"
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "bg-card text-muted-foreground hover:bg-muted hover:text-heading border"
               }`}
             >
-              <Lightbulb className="h-4 w-4" />
+              <Lightbulb className="h-4 w-4 shrink-0" />
               <span>Curiosidades Bíblicas</span>
             </button>
           </div>
@@ -261,7 +261,7 @@ function Index() {
                   value={q}
                   onChange={(e) => setQ(e.target.value)}
                   placeholder="Pesquisar título, tema, tópico ou referência (ex: santuário, Dn 8:14)"
-                  className="h-14 w-full rounded-2xl border bg-card pl-12 pr-16 text-base text-heading shadow-soft outline-none placeholder:text-muted-foreground focus:ring-2 focus:ring-ring"
+                  className="h-14 w-full rounded-2xl border bg-card pl-12 pr-4 md:pr-16 text-base text-heading shadow-soft outline-none placeholder:text-muted-foreground focus:ring-2 focus:ring-ring"
                 />
                 <kbd className="absolute right-4 top-1/2 hidden -translate-y-1/2 rounded border bg-muted px-1.5 py-0.5 text-xs text-muted-foreground md:block">
                   Ctrl K
@@ -291,12 +291,12 @@ function Index() {
                 <h2 className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">
                   Categorias temáticas
                 </h2>
-                <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                <div className="grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 md:grid-cols-4">
                   {CATEGORIES.map((c) => (
                     <button
                       key={c.id}
                       onClick={() => setCat(c.id)}
-                      className="group rounded-xl border bg-card p-4 text-left shadow-soft transition hover:-translate-y-0.5 hover:border-primary cursor-pointer"
+                      className="group min-w-0 rounded-xl border bg-card p-4 text-left shadow-soft transition hover:-translate-y-0.5 hover:border-primary cursor-pointer"
                     >
                       <c.icon className="h-5 w-5 text-primary" />
                       <p className="mt-3 text-sm font-medium leading-snug text-heading">

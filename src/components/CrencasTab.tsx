@@ -105,7 +105,7 @@ export function CrencasTab() {
     <div className="space-y-6">
       {/* Header com Descrição */}
       <div className="rounded-2xl border bg-gradient-to-br from-primary/10 via-card to-card p-6 shadow-soft md:p-8">
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_auto]">
           <div>
             <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
               <Sparkles className="h-3.5 w-3.5" /> Doutrinas Bíblicas
@@ -119,7 +119,7 @@ export function CrencasTab() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex min-w-0 flex-wrap items-center gap-2">
             <span className="rounded-xl border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-xs">
               30 Temas Bíblicos
             </span>
@@ -131,7 +131,7 @@ export function CrencasTab() {
       <section className="space-y-4 rounded-2xl border bg-card p-4 shadow-soft md:p-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-center">
           {/* Seletor dropdown direto para todas as 30 crenças */}
-          <div className="flex-1">
+          <div className="min-w-0 flex-1">
             <label
               htmlFor="crenca-selector"
               className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground"
@@ -162,7 +162,7 @@ export function CrencasTab() {
           </div>
 
           {/* Campo de Busca Rápida */}
-          <div className="flex-1">
+          <div className="min-w-0 flex-1">
             <label
               htmlFor="crenca-search"
               className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground"
@@ -219,7 +219,7 @@ export function CrencasTab() {
         <article className="overflow-hidden rounded-2xl border bg-card shadow-soft">
           {/* Barra de Ações Superior */}
           <div className="flex flex-wrap items-center justify-between gap-3 border-b bg-muted/40 p-4 md:px-6">
-            <div className="flex items-center gap-2">
+            <div className="flex min-w-0 flex-wrap items-center gap-2">
               <Button
                 variant="outline"
                 size="sm"
@@ -236,7 +236,7 @@ export function CrencasTab() {
               </Badge>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex min-w-0 flex-wrap items-center gap-2">
               {/* Controles de tamanho de fonte */}
               <div className="hidden items-center gap-1 rounded-lg border bg-background p-0.5 text-xs sm:flex">
                 <button
@@ -283,7 +283,7 @@ export function CrencasTab() {
           </div>
 
           {/* Conteúdo da Crença */}
-          <div className="p-6 md:p-10">
+          <div className="min-w-0 p-4 sm:p-6 md:p-10">
             <header className="mb-8 border-b pb-6">
               <span className="font-mono text-sm font-semibold text-primary">
                 Crença Fundamental #{String(selectedCrenca.id).padStart(2, "0")}
@@ -340,7 +340,7 @@ export function CrencasTab() {
             </div>
 
             {/* Navegação Entre Crenças */}
-            <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t pt-6">
+            <div className="mt-12 grid grid-cols-2 items-center gap-3 border-t pt-6 sm:grid-cols-[auto_minmax(0,1fr)_auto]">
               <Button
                 variant="outline"
                 onClick={handlePrev}
@@ -349,7 +349,7 @@ export function CrencasTab() {
                 <ChevronLeft className="h-4 w-4" /> Anterior
               </Button>
 
-              <div className="text-center text-xs text-muted-foreground">
+              <div className="order-last col-span-2 text-center text-xs text-muted-foreground sm:order-none sm:col-span-1">
                 Navegue pelas 30 crenças fundamentais
               </div>
 
@@ -366,7 +366,7 @@ export function CrencasTab() {
       ) : (
         /* MODO GRADE / LISTA DE TODAS AS CRENÇAS */
         <section className="space-y-4">
-          <div className="flex items-center justify-between">
+          <div className="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-2">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
               {filteredCrencas.length} {filteredCrencas.length === 1 ? "crença encontrada" : "crenças encontradas"}
             </h2>

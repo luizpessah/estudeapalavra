@@ -56,7 +56,7 @@ function StudyPage() {
 
   return (
     <Shell>
-      <article key={s.id} className="mx-auto max-w-3xl animate-in fade-in slide-in-from-bottom-2 duration-300">
+      <article key={s.id} className="mx-auto min-w-0 max-w-3xl animate-in fade-in slide-in-from-bottom-2 duration-300">
         <Link to="/" className="no-print mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-heading">
           <ArrowLeft className="h-4 w-4" /> Todos os estudos
         </Link>

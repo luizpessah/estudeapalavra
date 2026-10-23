@@ -2,4 +2,4 @@
 - [x] Add a Bible tab with complete text search and access to the original PDF.
 - [x] Test search completeness and verify the app flow (perdão, accent-insensitive matches, book filter, pagination, no results, reading and mobile layout).
 - [x] Replace the bundled studies with the complete updated attachment and verify reading and search without changing Bible content.
-- [ ] Replace the study base with the final corrected attachment (ATUALIZADA-3) and verify the corrected content in reading and search.
+- [x] Replace the study base with the final corrected attachment (ATUALIZADA-3) and verify the corrected content in reading and search.

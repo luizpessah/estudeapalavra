@@ -3,3 +3,5 @@
 - [x] Test search completeness and verify the app flow (perdão, accent-insensitive matches, book filter, pagination, no results, reading and mobile layout).
 - [x] Replace the bundled studies with the complete updated attachment and verify reading and search without changing Bible content.
 - [x] Replace the study base with the final corrected attachment (ATUALIZADA-3) and verify the corrected content in reading and search.
+- [ ] Adapt all public screens for mobile, tablet, and desktop and verify layout.
+- [ ] Remove public import access; keep study updates available only to project administration.

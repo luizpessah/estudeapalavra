@@ -1,5 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
-import { createRouter, rootRouteId } from "@tanstack/react-router";
+import { createRouter, rootRouteId, createMemoryHistory } from "@tanstack/react-router";
 import { describe, expect, it } from "vitest";
 
 import { routeTree } from "@/routeTree.gen";
@@ -13,5 +13,15 @@ describe("App routing", () => {
     const matches = router.matchRoutes("/");
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
+  });
+  it("redirects public import access home", async () => {
+    const router = createRouter({
+      routeTree,
+      history: createMemoryHistory({ initialEntries: ["/importar"] }),
+      context: { queryClient: new QueryClient() },
+    });
+    await router.load();
+    expect(router.state.location.pathname).toBe("/");
+    expect(router.state.matches.some((match) => match.routeId === "/importar")).toBe(false);
   });
 });

@@ -76,7 +76,7 @@ export function CuriosidadesTab() {
     <div className="space-y-6">
       {/* Banner / Destaque de Curiosidades */}
       <div className="rounded-2xl border bg-gradient-to-br from-amber-500/10 via-card to-card p-6 shadow-soft md:p-8">
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="grid min-w-0 grid-cols-1 items-start gap-4 lg:grid-cols-[minmax(0,1fr)_auto]">
           <div>
             <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
               <Lightbulb className="h-3.5 w-3.5" /> Curiosidades Bíblicas
@@ -94,7 +94,7 @@ export function CuriosidadesTab() {
             variant="outline"
             size="sm"
             onClick={nextFeatured}
-            className="gap-2 text-xs font-medium"
+            className="h-auto min-h-9 max-w-full justify-self-start gap-2 whitespace-normal text-left text-xs font-medium"
           >
             <RefreshCw className="h-3.5 w-3.5" /> Nova Curiosidade em Destaque
           </Button>
@@ -103,7 +103,7 @@ export function CuriosidadesTab() {
         {/* Card Destaque Dinâmico */}
         {featured && (
           <div className="mt-6 rounded-xl border border-amber-500/20 bg-card/60 p-5 backdrop-blur">
-            <div className="flex items-center justify-between gap-2">
+            <div className="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-start gap-2">
               <span className="text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
                 Você sabia?
               </span>
@@ -176,11 +176,11 @@ export function CuriosidadesTab() {
               className="flex flex-col justify-between rounded-2xl border bg-card p-6 shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
             >
               <div>
-                <div className="flex items-center justify-between gap-2">
-                  <Badge variant="secondary" className="text-xs">
+                <div className="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-start gap-2">
+                  <Badge variant="secondary" className="max-w-full whitespace-normal text-xs">
                     {item.category}
                   </Badge>
-                  <span className="font-mono text-xs font-semibold text-primary">
+                  <span className="max-w-28 break-words text-right font-mono text-xs font-semibold text-primary">
                     {item.verse}
                   </span>
                 </div>
@@ -212,8 +212,8 @@ export function CuriosidadesTab() {
                 )}
               </div>
 
-              <div className="mt-5 flex items-center justify-between border-t pt-4">
-                <Button asChild variant="ghost" size="sm" className="gap-1.5 text-xs text-muted-foreground">
+              <div className="mt-5 grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-1 border-t pt-4">
+                <Button asChild variant="ghost" size="sm" className="h-auto min-h-9 min-w-0 gap-1.5 px-1 whitespace-normal text-xs text-muted-foreground">
                   <Link to="/biblia">
                     <BookOpen className="h-3.5 w-3.5" /> Consultar Bíblia
                   </Link>

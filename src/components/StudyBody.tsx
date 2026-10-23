@@ -23,7 +23,7 @@ function withRefs(text: string): ReactNode[] {
         target="_blank"
         rel="noreferrer"
         title={`${name} ${ch}:${vs}`}
-        className="whitespace-nowrap rounded px-0.5 font-sans text-[0.9em] font-medium text-primary underline decoration-primary/30 underline-offset-2 hover:decoration-primary"
+        className="rounded px-0.5 font-sans text-[0.9em] font-medium text-primary underline decoration-primary/30 underline-offset-2 hover:decoration-primary"
       >
         {full}
       </a>,
@@ -53,7 +53,7 @@ export function StudyBody({ body }: { body: string }) {
       }
       const [head = [], ...rest] = rows;
       blocks.push(
-        <div key={key++} className="my-6 -mx-4 overflow-x-auto px-4 md:mx-0 md:px-0">
+        <div key={key++} className="my-6 w-full min-w-0 max-w-full overflow-x-auto">
           <table className="w-full min-w-[560px] border-collapse overflow-hidden rounded-xl border text-left font-sans text-sm">
             <thead className="bg-muted">
               <tr>{head.map((c, j) => <th key={j} className="border-b p-3 font-semibold text-heading">{c}</th>)}</tr>
@@ -75,14 +75,14 @@ export function StudyBody({ body }: { body: string }) {
     if (r) {
       blocks.push(
         <h2 key={key++} className="mt-10 flex gap-3 font-sans text-[1.05em] font-semibold uppercase tracking-wide text-heading">
-          <span className="text-primary">{r[1]}</span><span>{withRefs(r[2]!)}</span>
+          <span className="shrink-0 text-primary">{r[1]}</span><span className="min-w-0">{withRefs(r[2]!)}</span>
         </h2>,
       );
     } else if (s) {
       blocks.push(
         <p key={key++} className="mt-3 flex gap-3 pl-1">
           <span className="w-5 shrink-0 font-sans font-semibold text-primary">{s[1]}</span>
-          <span>{withRefs(s[2]!)}</span>
+          <span className="min-w-0">{withRefs(s[2]!)}</span>
         </p>,
       );
     } else if (line === line.toUpperCase() && /[A-ZÀ-Ú]{3}/.test(line) && line.length < 90) {
